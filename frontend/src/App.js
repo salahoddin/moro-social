@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import register from './screens/register'
-import login from './screens/login'
+// import register from './screens/register'
+// import login from './screens/login'
 import PageRender from './PageRender'
 
 const App = () => {
