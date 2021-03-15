@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 // import register from './screens/register'
-// import login from './screens/login'
+import Login from './screens/login'
+import Home from './screens/home'
 import PageRender from './PageRender'
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
 			<input type='checkbox' id='theme' />
 			<div className='App'>
 				<div className='main'>
+					<Route exact path='/' component={Login}></Route>
 					<Route exact path='/:page' component={PageRender}></Route>
 					<Route exact path='/:page/:id' component={PageRender}></Route>
 				</div>
