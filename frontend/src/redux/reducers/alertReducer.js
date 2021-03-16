@@ -1,12 +1,13 @@
 import { GLOBAL_TYPES } from '../actions/globalTypes'
 
-const authReducer = (state = {}, action) => {
+const alertReducer = (state = {}, action) => {
 	switch (action.type) {
-		case GLOBAL_TYPES.AUTH:
+		case GLOBAL_TYPES.ALERT: {
 			return action.payload
+		}
 		default:
 			return state
 	}
 }
 
-export default authReducer
+export default alertReducer

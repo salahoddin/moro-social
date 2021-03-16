@@ -3,11 +3,11 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import authReducer from './reducers/authReducer'
-import notifyReducer from './reducers/notifyReducer'
+import alertReducer from './reducers/alertReducer'
 
 const reducer = combineReducers({
 	auth: authReducer,
-	notify: notifyReducer,
+	alert: alertReducer,
 })
 
 // const userInfoFromStorage = localStorage.getItem('userInfo')

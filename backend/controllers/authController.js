@@ -67,7 +67,9 @@ const authController = {
 				'-password'
 			)
 			if (!user)
-				return res.status(400).json({ message: 'This email does not exist' })
+				return res
+					.status(400)
+					.json({ message: 'Invalid username and/or password' })
 
 			const isMatch = await bcrypt.compare(password, user.password)
 			if (!isMatch)
