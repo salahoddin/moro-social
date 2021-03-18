@@ -12,7 +12,7 @@ const Loader = () => {
 				zIndex: 5,
 			}}
 		>
-			<svg width='205' height='250' viewBox='0 0 40 50'>
+			{/* <svg width='205' height='250' viewBox='0 0 40 50'>
 				<polygon
 					stroke='#fff'
 					strokeWidth='1'
@@ -22,7 +22,14 @@ const Loader = () => {
 				<text fill='#fff' x='5' y='47'>
 					Loading
 				</text>
-			</svg>
+			</svg> */}
+			<div
+				className='spinner-border'
+				role='status'
+				style={{ width: '8rem', height: '8rem' }}
+			>
+				<span className='sr-only'>Loading...</span>
+			</div>
 		</div>
 	)
 }

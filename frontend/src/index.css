@@ -30,13 +30,23 @@ code {
 	width: 100%;
 	margin: auto;
 }
+img {
+	object-fit: cover;
+}
 
-
+.avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
 
 /* -------------LOGIN/AUTH------------- */
 
 @import url('./styles/auth.css');
 
-/* -------------LOADER------------- */
+/* ---------------LOADER--------------- */
 
 @import url('./styles/loader.css');
+
+/* ---------------HEADER--------------- */
+@import url('./styles/header.css');

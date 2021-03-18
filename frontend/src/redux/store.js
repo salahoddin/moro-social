@@ -4,10 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import authReducer from './reducers/authReducer'
 import alertReducer from './reducers/alertReducer'
+import themeReducer from './reducers/themeReducer'
 
 const reducer = combineReducers({
 	auth: authReducer,
 	alert: alertReducer,
+	theme: themeReducer,
 })
 
 // const userInfoFromStorage = localStorage.getItem('userInfo')
