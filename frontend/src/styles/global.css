@@ -34,19 +34,17 @@ img {
 	object-fit: cover;
 }
 
-.avatar {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-}
-
 /* -------------LOGIN/AUTH------------- */
 
-@import url('./styles/auth.css');
+@import url('./auth.css');
 
 /* ---------------LOADER--------------- */
 
-@import url('./styles/loader.css');
+@import url('./loader.css');
 
 /* ---------------HEADER--------------- */
-@import url('./styles/header.css');
+@import url('./header.css');
+
+/* ---------------AVATAR--------------- */
+
+@import url('./avatar.css');

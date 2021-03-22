@@ -23,6 +23,7 @@ const Loader = () => {
 					Loading
 				</text>
 			</svg> */}
+
 			<div
 				className='spinner-border'
 				role='status'
