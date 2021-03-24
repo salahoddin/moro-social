@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { getDataAPI } from '../../utils/fetchData'
 import { GLOBAL_TYPES } from '../../redux/actions/globalTypes'
 import UserCard from '../UserCard'
+import LoadingIcon from '../../images/loading.gif'
 
 const Search = () => {
 	const { auth } = useSelector((state) => state)
@@ -11,28 +11,34 @@ const Search = () => {
 
 	const [search, setSearch] = useState('')
 	const [users, setUsers] = useState([])
-
-	useEffect(() => {
-		if (search) {
-			getDataAPI(`search?username=${search}`, auth.token)
-				.then((res) => setUsers(res.data.users))
-				.catch((err) => {
-					dispatch({
-						type: GLOBAL_TYPES.ALERT,
-						payload: { error: err.response.data.message },
-					})
-				})
-		} else {
-			setUsers([])
-		}
-	}, [search, auth.token, dispatch])
+	const [loading, setLoading] = useState(false)
 
 	const closeHandler = () => {
 		setSearch('')
 		setUsers([])
 	}
+
+	const searchHandler = async (e) => {
+		e.preventDefault()
+		if (!search) return
+
+		try {
+			setLoading(true)
+
+			const res = await getDataAPI(`search?username=${search}`, auth.token)
+			setUsers(res.data.users)
+
+			setLoading(false)
+		} catch (err) {
+			dispatch({
+				type: GLOBAL_TYPES.ALERT,
+				payload: { error: err.response.data.message },
+			})
+			setLoading(false)
+		}
+	}
 	return (
-		<form className='search_form'>
+		<form className='search_form' onSubmit={searchHandler}>
 			<input
 				type='text'
 				name='search'
@@ -54,17 +60,22 @@ const Search = () => {
 				&times;
 			</div>
 
+			<button type='submit' style={{ display: 'none' }}>
+				Search
+			</button>
+			{loading && (
+				<img className='loader' src={LoadingIcon} alt='loading'></img>
+			)}
+
 			<div className='users'>
 				{search &&
 					users.map((user) => (
-						<Link
-							user={user}
+						<UserCard
 							key={user._id}
-							to={`/profile/${user._id}`}
-							onClick={closeHandler}
-						>
-							<UserCard user={user} border='border'></UserCard>
-						</Link>
+							user={user}
+							border='border'
+							closeHandler={closeHandler}
+						></UserCard>
 					))}
 			</div>
 		</form>
