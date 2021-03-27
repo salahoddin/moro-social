@@ -23,6 +23,39 @@ const userController = {
 			return res.status(500).json({ message: err.message })
 		}
 	},
+	updateUser: async (req, res) => {
+		try {
+			const {
+				avatar,
+				fullname,
+				mobile,
+				address,
+				story,
+				website,
+				gender,
+			} = req.body
+
+			if (!fullname)
+				return res.status(400).json({ message: 'Please enter your fullname' })
+
+			await User.findOneAndUpdate(
+				{ _id: req.user._id },
+				{
+					avatar: avatar,
+					fullname: fullname,
+					mobile: mobile,
+					address: address,
+					story: story,
+					website: website,
+					gender: gender,
+				}
+			)
+
+			res.json({ message: 'Successfully updated' })
+		} catch (err) {
+			return res.status(500).json({ message: err.message })
+		}
+	},
 }
 
 module.exports = userController

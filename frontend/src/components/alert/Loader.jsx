@@ -9,7 +9,7 @@ const Loader = () => {
 				color: 'white',
 				top: 0,
 				left: 0,
-				zIndex: 5,
+				zIndex: 10,
 			}}
 		>
 			{/* <svg width='205' height='250' viewBox='0 0 40 50'>
