@@ -1,4 +1,5 @@
 import { PROFILE_TYPES } from '../../redux/actions/profileAction'
+import { editData } from '../actions/globalTypes'
 
 const initialState = {
 	loading: false,
@@ -14,10 +15,19 @@ const profileReducer = (state = initialState, action) => {
 				loading: action.payload,
 			}
 		case PROFILE_TYPES.GET_USER:
-			console.log(action.payload)
 			return {
 				...state,
 				users: [...state.users, action.payload.user],
+			}
+		case PROFILE_TYPES.FOLLOW:
+			return {
+				...state,
+				users: editData(state.users, action.payload._id, action.payload),
+			}
+		case PROFILE_TYPES.UNFOLLOW:
+			return {
+				...state,
+				users: editData(state.users, action.payload._id, action.payload),
 			}
 		default:
 			return state

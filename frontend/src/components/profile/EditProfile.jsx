@@ -54,6 +54,15 @@ const EditProfile = ({ setOnEdit }) => {
 				Close
 			</button> */}
 			<form onSubmit={onSubmitHandler}>
+				<div style={{ display: 'flex' }}>
+					<button
+						className='btn btn-danger btn_close'
+						onClick={() => setOnEdit(false)}
+					>
+						Close
+					</button>
+				</div>
+
 				<div className='info_avatar'>
 					<img
 						src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
@@ -158,15 +167,15 @@ const EditProfile = ({ setOnEdit }) => {
 						<option value='female'>Female</option>
 					</select>
 				</div>
-				<button
+				{/* <button
 					className='btn btn-danger w-100'
 					type='button'
 					onClick={() => setOnEdit(false)}
 				>
 					Cancel
-				</button>
+				</button> */}
 				<button
-					className='btn btn-info w-100'
+					className='btn btn-info w-100 '
 					type='submit'
 					style={{ marginTop: '3px' }}
 				>

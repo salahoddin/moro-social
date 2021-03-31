@@ -28,8 +28,7 @@ const userSchema = new mongoose.Schema(
 		},
 		avatar: {
 			type: String,
-			default:
-				'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png',
+			default: '',
 		},
 		role: {
 			type: String,
@@ -62,6 +61,18 @@ const userSchema = new mongoose.Schema(
 	},
 	{ timestamps: true }
 )
+
+userSchema.pre('save', function (next) {
+	if (this.gender === 'male') {
+		this.avatar =
+			'https://res.cloudinary.com/dhenabod/image/upload/v1616901921/moro-social/mdefault_fpmb0u.jpg'
+	} else {
+		this.avatar =
+			'https://res.cloudinary.com/dhenabod/image/upload/v1616901870/moro-social/fdefault_i3fevd.jpg'
+	}
+
+	next()
+})
 
 const User = mongoose.model('user', userSchema)
 
